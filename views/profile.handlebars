@@ -1,0 +1,38 @@
+<div class="container-fluid">
+
+    <div class="row">
+
+        {{!-- Loop through each post --}}
+        {{#each posts as |post| }}
+
+        <div class="col-12 m-3">
+            <div class="card bg-light">
+                <div class="card-header">
+                    {{post.title}}
+                    <button style="button" class="btn btn-secondary float-right">Delete Post</button>
+                </div>
+                <div class="card-body">
+                    <div class="card-title text-muted">Posted by: {{post.user.name}}</div>
+                    <h4>Post</h4>
+                    <p>{{post.text}}</p>
+
+
+                    {{!-- Comments --}}
+                    <br>
+                    <h4>Comments</h4>
+                    {{#each post.comments as |comment| }}
+                        <div class="card bg-light">
+                            <div class="card-header">{{comment.user.name}}</div>
+                            <div class="card-body">
+                                <p>{{comment.text}}</p>
+                            </div>
+                        </div>
+                    {{/each}}
+                </div>
+            </div>
+        </div>
+
+        {{/each}}
+    </div>
+
+</div>
