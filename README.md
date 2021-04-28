@@ -7,4 +7,3 @@ Todo
 - Auth
 
 - Figure out delete issue
-- Create account
