@@ -58,5 +58,44 @@ router.get('/login', async (req, res) => {
     }
 })
 
+// Profile GET
+// Home page route
+router.get('/profile', async (req, res) => {
+
+    try {
+        const postData = await Post.findAll({
+            where: {
+                user_id: req.session.user_id
+            },
+            include: [
+                {
+                    model: Comment,
+                    attributes: ['text'],
+                    include: [
+                        {
+                            model:User,
+                            attributes: ['name']
+                        }
+                    ]
+                },
+                {
+                    model: User,
+                    attributes: ['name']
+                }
+            ],
+            attributes: ['title', 'text', 'createdAt', 'user_id', 'id']
+        })
+
+        const posts = postData.map((post) => post.get({plain: true}))
+
+        res.render('profile', {
+            posts,
+            logged_in: req.session.logged_in,
+        })
+    } catch (error) {
+        res.status(500).json(error)
+    }
+})
+
 
 module.exports = router

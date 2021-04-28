@@ -2,6 +2,20 @@
 
     <div class="row">
 
+        {{!-- New Post --}}
+        <div class="col-12 m-3">
+            <div class="card bg-light">
+                <div class="card-header">New Post</div>
+                <div class="card-body">
+                    <input class='m-3' type="text" id="newPostTitle"placeholder="Enter new post title">
+                    <br>
+                    <input class="m-3" type="text" id="newPostText" placeholder="Enter new post text">
+                    <br>
+                    <button type='button' class="btn btn-primary m-3" id="newPostBtn">Submit</button>
+                </div>
+            </div>
+        </div>
+
         {{!-- Loop through each post --}}
         {{#each posts as |post| }}
 
@@ -27,6 +41,17 @@
                             </div>
                         </div>
                     {{/each}}
+
+                    {{!-- Comment Section --}}
+                    <br>
+                    <form>
+                        <div class="form-group">
+                            <label for="">Comment</label>
+                            <br>
+                            <input type="comment" id='{{post.id}}Comment' placeholder="Comment here">
+                        </div>
+                        <button type='button' id='{{post.id}}Button' class='btn btn-primary comment-btn'>Comment</button>
+                    </form>
                 </div>
             </div>
         </div>

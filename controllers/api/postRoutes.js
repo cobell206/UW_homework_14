@@ -1,4 +1,5 @@
 const router = require('express').Router()
+const { response } = require('express')
 const { User, Comment, Post } = require('../../models')
 const withAuth = require('../../utils/auth')
 
@@ -34,16 +35,19 @@ router.put('/:id', async (req, res) => {
 
 // DELETE post
 router.delete('/:id', async (req, res) => {
+
     try {
         const postData = await Post.destroy({
             where: {
-                id: req.params.id
-            }
+                id: req.params.id,
+            },
         })
         res.status(200).json(postData)
     } catch (error) {
+        console.log(error);
         res.status(500).json(error)
     }
+    
 })
 
 // GET all posts

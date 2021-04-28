@@ -6,10 +6,10 @@
         {{#each posts as |post| }}
 
         <div class="col-12 m-3">
-            <div class="card bg-light">
+            <div class="card bg-light post-card">
                 <div class="card-header">
                     {{post.title}}
-                    <button style="button" class="btn btn-secondary float-right">Delete Post</button>
+                    <button style="button" class="btn btn-secondary float-right delete-button" data-id="{{post.id}}">Delete Post</button>
                 </div>
                 <div class="card-body">
                     <div class="card-title text-muted">Posted by: {{post.user.name}}</div>
@@ -17,7 +17,7 @@
                     <p>{{post.text}}</p>
 
 
-                    {{!-- Comments --}}
+                    {{!-- Comments
                     <br>
                     <h4>Comments</h4>
                     {{#each post.comments as |comment| }}
@@ -27,7 +27,7 @@
                                 <p>{{comment.text}}</p>
                             </div>
                         </div>
-                    {{/each}}
+                    {{/each}} --}}
                 </div>
             </div>
         </div>
@@ -36,3 +36,5 @@
     </div>
 
 </div>
+
+<script src="./js/profile.js"></script>

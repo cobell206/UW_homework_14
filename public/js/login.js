@@ -22,6 +22,35 @@ const loginFormHandler = async (event) => {
     }
 }
 
+const signupHandler = async () => {
+
+    const email = $('#signupEmail').val()
+    const password = $('#signupPassword').val()
+    const name = $('#signupName').val()
+
+    if (email && password) {
+
+        // Fetch to POST user
+        const response = await fetch ('/api/users/', {
+            method: 'POST',
+            body: JSON.stringify({email, password, name}),
+            headers: {'Content-Type': 'application/json'}
+        })
+
+        alert('Acount created! You can now login')
+
+        if (response.ok) {
+            document.location.replace('/login')
+        } else {
+            alert(response.statusText)
+        }
+    }
+
+    
+}
+
 document
     .querySelector('.login-form')
     .addEventListener('submit', loginFormHandler)
+
+$('#signupBtn').on('click', signupHandler)

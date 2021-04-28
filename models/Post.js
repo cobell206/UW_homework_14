@@ -18,7 +18,6 @@ Post.init(
             references: {
                 model: 'user',
                 key: 'id',
-                uniqie: false
             }
         },
         title: {
