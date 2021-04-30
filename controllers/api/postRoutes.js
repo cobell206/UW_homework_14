@@ -20,6 +20,8 @@ router.post('/', async (req, res) => {
 
 // PUT edit a post
 router.put('/:id', async (req, res) => {
+
+    console.log('\n\nupdating post\n\n');
     try {
         const editPost = await Post.update(req.body, {
             where: {

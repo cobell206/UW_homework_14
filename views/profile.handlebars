@@ -16,18 +16,13 @@
                     <h4>Post</h4>
                     <p>{{post.text}}</p>
 
-
-                    {{!-- Comments
-                    <br>
-                    <h4>Comments</h4>
-                    {{#each post.comments as |comment| }}
-                        <div class="card bg-light">
-                            <div class="card-header">{{comment.user.name}}</div>
-                            <div class="card-body">
-                                <p>{{comment.text}}</p>
-                            </div>
+                    <div class="form-group">
+                            <label for="">Update Post? Change text below.</label>
+                            <br>
+                            <textarea name="" id="updateText" cols="15" rows="2" class="form-control">{{post.text}}</textarea>
                         </div>
-                    {{/each}} --}}
+                        <button type='button' id='updateBtn' post-id={{post.id}} class='btn btn-primary update-btn'>Comment</button>
+
                 </div>
             </div>
         </div>

@@ -30,5 +30,24 @@ const home_route = async () => {
 
 } 
 
+const updatePost = async (event) => {
+
+    const label = event.target.getAttribute('post-id')
+    const text = $('#updateText').val()
+
+    // Get PUT for post
+    const response = await fetch(`/api/posts/${label}`, {
+        method: 'PUT',
+        body: JSON.stringify({
+            id: label,
+            text: text
+        }),
+        headers: { 'Content-Type': 'application/json'}
+    })
+
+    document.location.replace('/profile')
+}
+
 $(".delete-button").on('click', deletePost)
 $("#home-nav").on('click', home_route)
+$('#updateBtn').on('click', updatePost)
