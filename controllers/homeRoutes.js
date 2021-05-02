@@ -32,7 +32,9 @@ router.get('/', withAuth, async (req, res) => {
             logged_in: req.session.logged_in,
         })
     } catch (error) {
-        res.status(500).json(error)
+        res.render('login')
+        // res.status(500).json(error)
+        
     }
 })
 
